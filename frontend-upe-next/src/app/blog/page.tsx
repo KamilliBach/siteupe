@@ -1,8 +1,7 @@
 import BlogCard from "@/components/blog/BlogCard";
-import Hero from "@/components/home/Hero";
 import { BlogPost } from "@/types";
 
-export default function Home() {
+export default function BlogPage() {
   const postagens: BlogPost[] = [
     {
       id: '1',
@@ -80,37 +79,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Hero />
-      
-      <main className="container-custom py-16">
-        {/* Seção de Destaques */}
-        <section className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Últimas Notícias</h2>
-            <p className="text-gray-600">Fique atualizado com os últimos artigos e notícias da nossa instituição</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {postagens.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
+      {/* Hero Section */}
+      <section className="bg-blue-600 text-white py-12">
+        <div className="container-custom">
+          <h1 className="text-4xl font-bold mb-4">Blog Institucional</h1>
+          <p className="text-blue-100 text-lg">Todos os artigos, notícias e atualizações</p>
+        </div>
+      </section>
 
-        {/* Seção de Categorias */}
-        <section className="bg-white rounded-lg p-8 border border-gray-200">
-          <h2 className="text-2xl font-bold mb-6">Categorias</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {['Destaques', 'Tecnologia', 'Sustentabilidade', 'Pesquisa', 'Comunidade', 'Educação'].map((cat) => (
-              <button
-                key={cat}
-                className="px-4 py-3 border border-gray-300 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-left font-medium"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </section>
+      {/* Main Content */}
+      <main className="container-custom py-16">
+        <div className="grid md:grid-cols-3 gap-6">
+          {postagens.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
+        </div>
       </main>
     </div>
   );
