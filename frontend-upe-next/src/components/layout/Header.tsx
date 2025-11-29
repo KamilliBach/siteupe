@@ -2,34 +2,50 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import UPELogo from '../UPELogo';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="container-custom py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          Blog Institucional
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b" style={{ borderColor: '#EEEEEE' }}>
+      <nav className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <UPELogo width={50} height={50} />
+          <div className="hidden sm:block">
+            <div className="text-sm font-bold" style={{ color: '#1A4081' }}>UPE</div>
+            <div className="text-xs" style={{ color: '#666666' }}>Estudantes do Paraná</div>
+          </div>
         </Link>
 
-        <div className="hidden md:flex space-x-8 text-gray-700">
-          <Link href="/" className="hover:text-blue-600 transition-colors">
+        <div className="hidden lg:flex space-x-6 text-sm items-center" style={{ color: '#333333' }}>
+          <Link href="/" className="font-medium hover:opacity-70 transition-opacity" style={{ color: '#1A4081' }}>
             Home
           </Link>
-          <Link href="/blog" className="hover:text-blue-600 transition-colors">
+          <Link href="/institucional" className="font-medium hover:opacity-70 transition-opacity" style={{ color: '#333333' }}>
+            Institucional
+          </Link>
+          <Link href="/noticias" className="font-medium hover:opacity-70 transition-opacity" style={{ color: '#333333' }}>
+            Notícias
+          </Link>
+          <Link href="/servicos" className="font-medium hover:opacity-70 transition-opacity" style={{ color: '#333333' }}>
+            Serviços
+          </Link>
+          <Link href="/blog" className="font-medium hover:opacity-70 transition-opacity" style={{ color: '#333333' }}>
             Blog
           </Link>
-          <Link href="/about" className="hover:text-blue-600 transition-colors">
-            Sobre
-          </Link>
-          <Link href="/contato" className="hover:text-blue-600 transition-colors">
+          <div className="h-6 w-px" style={{ backgroundColor: '#EEEEEE' }}></div>
+          <Link 
+            href="/contato" 
+            className="text-white px-5 py-2 rounded-lg font-semibold text-sm transition-opacity hover:opacity-90"
+            style={{ backgroundColor: '#1A4081' }}
+          >
             Contato
           </Link>
         </div>
 
         <button
-          className="md:hidden"
+          className="lg:hidden text-xl"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -37,17 +53,23 @@ export default function Header() {
         </button>
 
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white shadow-lg md:hidden">
-            <Link href="/" className="block px-4 py-2 hover:bg-gray-100">
+          <div className="absolute top-full left-0 right-0 bg-white shadow-lg lg:hidden border-t" style={{ borderColor: '#EEEEEE' }}>
+            <Link href="/" className="block px-4 py-3 border-b" style={{ color: '#333333', borderColor: '#EEEEEE', backgroundColor: '#E0F2F7' }}>
               Home
             </Link>
-            <Link href="/blog" className="block px-4 py-2 hover:bg-gray-100">
+            <Link href="/institucional" className="block px-4 py-3 border-b hover:opacity-70 transition-opacity" style={{ color: '#333333', borderColor: '#EEEEEE' }}>
+              Institucional
+            </Link>
+            <Link href="/noticias" className="block px-4 py-3 border-b hover:opacity-70 transition-opacity" style={{ color: '#333333', borderColor: '#EEEEEE' }}>
+              Notícias
+            </Link>
+            <Link href="/servicos" className="block px-4 py-3 border-b hover:opacity-70 transition-opacity" style={{ color: '#333333', borderColor: '#EEEEEE' }}>
+              Serviços
+            </Link>
+            <Link href="/blog" className="block px-4 py-3 border-b hover:opacity-70 transition-opacity" style={{ color: '#333333', borderColor: '#EEEEEE' }}>
               Blog
             </Link>
-            <Link href="/about" className="block px-4 py-2 hover:bg-gray-100">
-              Sobre
-            </Link>
-            <Link href="/contato" className="block px-4 py-2 hover:bg-gray-100">
+            <Link href="/contato" className="block px-4 py-3 border-b hover:opacity-70 transition-opacity" style={{ color: '#333333', borderColor: '#EEEEEE' }}>
               Contato
             </Link>
           </div>
