@@ -1,31 +1,21 @@
-# Blog Institucional - Next.js + TypeScript + Tailwind CSS
+# Site Institucional UPE
 
-Um projeto completo de blog institucional construído com Next.js 14, TypeScript, Tailwind CSS e componentes modernos.
+Site desenvolvido com Next.js 14, TypeScript e Tailwind CSS para divulgação e gerenciamento de conteúdo institucional.
 
-## 🚀 Funcionalidades
-
-- ✅ Home com hero section e grid de artigos em destaque
-- ✅ Página de blog com listagem completa de artigos
-- ✅ Página dinâmica de posts individuais
-- ✅ Página "Sobre a Instituição" com missão, visão e valores
-- ✅ Página de contato com formulário funcional
-- ✅ Componentes reutilizáveis e bem organizados
-- ✅ Design responsivo (mobile, tablet, desktop)
-- ✅ Tailwind CSS para estilização moderna
-- ✅ TypeScript para segurança de tipos
-
-## 📁 Estrutura do Projeto
+## Estrutura
 
 ```
 src/
 ├── app/                          # Páginas e layouts (App Router)
 │   ├── page.tsx                  # Home
-│   ├── blog/
-│   │   ├── page.tsx              # Listagem de artigos
-│   │   └── [slug]/
-│   │       └── page.tsx          # Post individual dinâmico
-│   ├── about/page.tsx            # Sobre a instituição
-│   ├── contato/page.tsx          # Contato com formulário
+│   ├── about/page.tsx            # Sobre
+│   ├── blog/page.tsx             # Artigos
+│   ├── blog/[slug]/page.tsx      # Artigo individual
+│   ├── contato/page.tsx          # Contato
+│   ├── institucional/
+│   ├── noticias/
+│   ├── servicos/
+│   ├── participe/page.tsx        # Participação
 │   └── layout.tsx                # Layout global
 │
 ├── components/
@@ -36,8 +26,9 @@ src/
 │   ├── blog/
 │   │   └── BlogCard.tsx
 │   ├── home/
-│   │   └── Hero.tsx
-│   └── common/
+│   │   ├── Hero.tsx
+│   │   └── MapaPresenca.tsx
+│   └── UPELogo.tsx
 │
 ├── types/
 │   └── index.ts                  # Tipos TypeScript
@@ -49,173 +40,127 @@ src/
 ├── hooks/
 │   └── useBlogs.ts               # Hook para gerenciar artigos
 │
-├── styles/
-│   └── globals.css               # Estilos globais + Tailwind
-│
-└── content/
-    ├── blog/                     # Conteúdo de posts (MDX, JSON, etc.)
-    └── pages/                    # Conteúdo estático
+└── styles/
+    └── globals.css               # Estilos globais
 
 public/
 ├── images/
-│   └── blog/                     # Imagens de artigos
-└── icons/                        # Ícones
+└── icons/
 ```
 
-## 🛠️ Tecnologias Utilizadas
+## Páginas
 
-- **Next.js 14**: Framework React moderno
-- **TypeScript**: Tipagem estática
-- **React 18**: Biblioteca UI
-- **Tailwind CSS**: Estilização utilitária
-- **ESLint**: Linting de código
+| Página | URL |
+|--------|-----|
+| Home | `/` |
+| Quem Somos | `/institucional/quem-somos` |
+| História | `/institucional/historia` |
+| Gestão | `/institucional/gestao` |
+| Documentos | `/institucional/documentos` |
+| Pautas | `/institucional/pautas` |
+| Flâmula | `/noticias/flamula` |
+| Artigos | `/noticias/artigos` |
+| Mídia | `/noticias/midia` |
+| Informações | `/servicos/informacoes` |
+| Convênios | `/servicos/convenios` |
+| Organização | `/servicos/organizacao` |
+| Blog | `/blog` |
+| Artigo | `/blog/[slug]` |
+| Contato | `/contato` |
 
-## 📦 Instalação
+## Tecnologias
+
+- Next.js 14.0.1
+- TypeScript 5.1.6
+- React 18.2.0
+- Tailwind CSS 3.4.0
+- ESLint
+
+## Instalação
 
 ### Pré-requisitos
-- Node.js 18+ instalado
+- Node.js 18+
 - npm ou yarn
 
-### Passos de Instalação
+### Passos
 
-1. **Navegue até a pasta do projeto:**
+1. Navegue até o diretório do projeto:
    ```powershell
    cd C:\Users\kamil\Desktop\siteupe\frontend-upe-next
    ```
 
-2. **Instale as dependências:**
+2. Instale as dependências:
    ```powershell
    npm install
    ```
 
-3. **Execute em modo desenvolvimento:**
+3. Execute em modo desenvolvimento:
    ```powershell
    npm run dev
    ```
 
-4. **Abra no navegador:**
+4. Abra no navegador:
    ```
    http://localhost:3000
    ```
 
-## 🏃 Comandos Disponíveis
+## Comandos
 
 ```powershell
-# Modo desenvolvimento (com hot reload)
+# Modo desenvolvimento
 npm run dev
 
-# Construir para produção
-npm build
+# Build para produção
+npm run build
 
-# Iniciar em modo produção
+# Executar em produção
 npm start
 
-# Executar linter
+# Linter
 npm run lint
 ```
 
-## 📄 Páginas Disponíveis
+## Paleta de Cores
 
-| Página | URL | Descrição |
-|--------|-----|-----------|
-| Home | `/` | Página inicial com artigos em destaque |
-| Blog | `/blog` | Listagem completa de todos os artigos |
-| Post | `/blog/[slug]` | Artigo individual |
-| Sobre | `/about` | Informações sobre a instituição |
-| Contato | `/contato` | Formulário de contato |
+- Azul Principal: #1A4081
+- Verde: #4CAF50
+- Azul Claro: #E0F2F7
+- Teal: #14B8A6
 
-## 🎨 Customização
+Consulte `CORES.md` para detalhes completos.
 
-### Adicionar Novo Artigo
+## Solução de Problemas
 
-Para adicionar um novo artigo, edite o array `postagens` em qualquer página ou implemente uma integração com um CMS:
-
-```typescript
-const postagens: BlogPost[] = [
-  {
-    id: '1',
-    slug: 'meu-artigo',
-    title: 'Título do Artigo',
-    excerpt: 'Resumo do artigo...',
-    content: 'Conteúdo completo...',
-    author: 'Nome do Autor',
-    date: new Date().toISOString(),
-    image: 'URL da imagem',
-    tags: ['tag1', 'tag2'],
-    category: 'Categoria',
-  }
-];
-```
-
-### Customizar Cores
-
-Edite `tailwind.config.ts` para alterar o esquema de cores:
-
-```typescript
-theme: {
-  extend: {
-    colors: {
-      primary: '#0066cc',
-      secondary: '#00d4ff',
-    }
-  }
-}
-```
-
-### Adicionar Fonte Customizada
-
-Edite `src/styles/globals.css`:
-
-```css
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-body {
-  @apply font-poppins;
-}
-```
-
-## 🔗 Integrações Futuras
-
-- [ ] Integração com CMS (Strapi, Sanity, Contentful)
-- [ ] Sistema de comentários (Disqus, Utterances)
-- [ ] Analytics (Google Analytics, Plausible)
-- [ ] Search (Algolia, ElasticSearch)
-- [ ] Newsletter subscription
-- [ ] Social media sharing
-
-## 📱 Responsividade
-
-O projeto é totalmente responsivo:
-- ✅ Mobile (320px+)
-- ✅ Tablet (768px+)
-- ✅ Desktop (1024px+)
-
-## 🐛 Troubleshooting
-
-### Erro ao instalar dependências
+### Dependências não instalam
 ```powershell
-# Limpe o cache do npm
 npm cache clean --force
-
-# Tente instalar novamente
 npm install
 ```
 
-### Porta 3000 já em uso
+### Porta 3000 em uso
 ```powershell
-# Use uma porta diferente
 npm run dev -- -p 3001
 ```
 
-## 📝 Licença
-
-Este projeto é fornecido como exemplo educacional.
-
-## 👥 Suporte
-
-Para dúvidas ou sugestões, entre em contato através da página de contato.
-
 ---
 
-**Versão:** 1.0.0  
-**Última atualização:** Novembro de 2024
+**Versão:** 2.0.0
+
+## Backend (sugestão de skeleton)
+
+Um esqueleto de backend em TypeScript com Express foi adicionado em `backend/`. Ele fornece endpoints de exemplo:
+
+- GET /api/presidents — lista de ex-presidentes
+- GET /api/presidents/:id — detalhe de um ex-presidente
+- GET /api/motions — lista de moções e resoluções
+- GET /api/motions/:id — detalhe de uma moção/resolução
+
+Para executar o backend (opcional):
+
+```powershell
+cd backend
+npm install
+npm run dev
+```
+
+O servidor padrão escuta na porta 4000.

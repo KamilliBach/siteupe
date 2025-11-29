@@ -1,36 +1,168 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Site Institucional UPE
 
-## Getting Started
+Site desenvolvido com Next.js 14, TypeScript e Tailwind CSS para divulgação e gerenciamento de conteúdo institucional.
 
-First, run the development server:
+## Estrutura de Páginas
 
-```bash
+### Home (`/`)
+Página inicial contendo seções de apresentação institucional, mapa de presença, destaques e chamadas para ação.
+
+### Institucional (`/institucional`)
+
+**Quem Somos** (`/institucional/quem-somos`)  
+Informações sobre a instituição, propósito e contatos principais.
+
+**História** (`/institucional/historia`)  
+Histórico institucional, marcos importantes e evolução.
+
+**Gestão Atual** (`/institucional/gestao`)  
+Diretores, lideranças, funções e responsabilidades.
+
+**Documentos** (`/institucional/documentos`)  
+Estatuto, regimentos e documentos oficiais para download.
+
+**Pautas** (`/institucional/pautas`)  
+Objetivos, projetos e iniciativas estratégicas.
+
+### Notícias (`/noticias`)
+
+**Flâmula** (`/noticias/flamula`)  
+Publicação oficial da instituição.
+
+**Artigos** (`/noticias/artigos`)  
+Seção de artigos e análises com categorias e busca.
+
+**Artigo Individual** (`/noticias/artigos/[slug]`)  
+Visualização completa de artigos com informações de autor e data.
+
+**Mídia** (`/noticias/midia`)  
+Galeria de fotos e vídeos de eventos e atividades.
+
+### Serviços (`/servicos`)
+
+**Informações** (`/servicos/informacoes`)  
+FAQ, guia do estudante, calendário acadêmico e regulamentos.
+
+**Convênios** (`/servicos/convenios`)  
+Parcerias, descontos e benefícios disponíveis.
+
+**Organização** (`/servicos/organizacao`)  
+Estrutura de DCE, centros acadêmicos e contatos.
+
+### Blog (`/blog`)
+Seção de artigos e análises com acesso a posts individuais.
+
+### Contato (`/contato`)
+Formulário de contato, localização, mapa e horário de funcionamento.
+
+---
+
+## Rotas
+
+| Seção | Página | URL | Descrição |
+|-------|--------|-----|-----------|
+| Home | Home | `/` | Página inicial |
+| Institucional | Quem Somos | `/institucional/quem-somos` | Informações institucionais |
+| | História | `/institucional/historia` | Histórico da instituição |
+| | Gestão | `/institucional/gestao` | Diretores e lideranças |
+| | Documentos | `/institucional/documentos` | Documentos oficiais |
+| | Pautas | `/institucional/pautas` | Objetivos e compromissos |
+| Notícias | Flâmula | `/noticias/flamula` | Publicação oficial |
+| | Artigos | `/noticias/artigos` | Blog de artigos |
+| | Artigo | `/noticias/artigos/[slug]` | Artigo completo |
+| | Mídia | `/noticias/midia` | Galeria de fotos e vídeos |
+| Serviços | Informações | `/servicos/informacoes` | FAQ e guia |
+| | Convênios | `/servicos/convenios` | Parcerias e benefícios |
+| | Organização | `/servicos/organizacao` | DCE e CA |
+| Blog | Blog | `/blog` | Artigos e análises |
+| Contato | Contato | `/contato` | Formulário e localização |
+
+---
+
+## Tecnologias
+
+- Next.js 14.0.1
+- TypeScript 5.1.6
+- React 18.2.0
+- Tailwind CSS 3.4.0
+- ESLint
+
+## Instalação
+
+### Pré-requisitos
+- Node.js 18+
+- npm ou yarn
+
+### Passos
+
+1. Navegue até o diretório do projeto:
+   ```powershell
+   cd C:\Users\kamil\Desktop\siteupe\frontend-upe-next
+   ```
+
+2. Instale as dependências:
+   ```powershell
+   npm install
+   ```
+
+3. Execute em modo desenvolvimento:
+   ```powershell
+   npm run dev
+   ```
+
+4. Abra no navegador:
+   ```
+   http://localhost:3000
+   ```
+
+## Comandos
+
+```powershell
+# Modo desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build para produção
+npm run build
+
+# Executar em produção
+npm start
+
+# Linter
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Paleta de Cores
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A paleta de cores segue a identidade visual da UPE:
 
-## Learn More
+- Azul Principal: #1A4081
+- Verde: #4CAF50
+- Azul Claro: #E0F2F7
+- Teal: #14B8A6
 
-To learn more about Next.js, take a look at the following resources:
+Consulte `CORES.md` para detalhes completos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Versão:** 2.0.0
 
-## Deploy on Vercel
+## Backend (sugestão de skeleton)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Um esqueleto de backend em TypeScript com Express foi adicionado em `backend/`. Ele fornece endpoints de exemplo:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GET /api/presidents — lista de ex-presidentes
+- GET /api/presidents/:id — detalhe de um ex-presidente
+- GET /api/motions — lista de moções e resoluções
+- GET /api/motions/:id — detalhe de uma moção/resolução
+
+Para executar o backend (opcional):
+
+```powershell
+cd backend
+npm install
+npm run dev
+```
+
+O servidor padrão escuta na porta 4000.

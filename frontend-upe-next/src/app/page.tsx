@@ -1,116 +1,133 @@
-import BlogCard from "@/components/blog/BlogCard";
-import Hero from "@/components/home/Hero";
-import { BlogPost } from "@/types";
+import Hero from '@/components/home/Hero';
+import MapaPresenca from '@/components/home/MapaPresenca';
+import Link from 'next/link';
 
 export default function Home() {
-  const postagens: BlogPost[] = [
-    {
-      id: '1',
-      slug: 'boas-praticas-institucionais',
-      title: 'Boas Práticas Institucionais',
-      excerpt: 'Conheça as boas práticas que norteiam nossa instituição e como elas impactam nossas operações diárias.',
-      content: 'Conteúdo completo da postagem sobre boas práticas.',
-      author: 'Admin',
-      date: new Date(2024, 10, 10).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Boas+Práticas',
-      tags: ['práticas', 'instituição', 'operações'],
-      category: 'Destaques',
-    },
-    {
-      id: '2',
-      slug: 'transformacao-digital',
-      title: 'Transformação Digital em Foco',
-      excerpt: 'Exploraremos como a transformação digital está revolucionando nossa instituição e melhorando serviços.',
-      content: 'Conteúdo completo sobre transformação digital.',
-      author: 'Admin',
-      date: new Date(2024, 10, 8).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Digital',
-      tags: ['tecnologia', 'digital', 'transformação'],
-      category: 'Tecnologia',
-    },
-    {
-      id: '3',
-      slug: 'sustentabilidade-compromisso',
-      title: 'Sustentabilidade: Nosso Compromisso',
-      excerpt: 'Descubra como estamos comprometidos com práticas sustentáveis e responsabilidade social.',
-      content: 'Conteúdo completo sobre sustentabilidade.',
-      author: 'Admin',
-      date: new Date(2024, 10, 5).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Sustentabilidade',
-      tags: ['sustentabilidade', 'responsabilidade', 'ambiental'],
-      category: 'Sustentabilidade',
-    },
-    {
-      id: '4',
-      slug: 'inovacao-pesquisa',
-      title: 'Inovação e Pesquisa: O Futuro',
-      excerpt: 'Conheça nossos projetos de inovação e pesquisa que estão moldando o futuro da instituição.',
-      content: 'Conteúdo completo sobre inovação e pesquisa.',
-      author: 'Admin',
-      date: new Date(2024, 10, 3).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Inovação',
-      tags: ['inovação', 'pesquisa', 'futuro'],
-      category: 'Pesquisa',
-    },
-    {
-      id: '5',
-      slug: 'comunidade-parcerias',
-      title: 'Comunidade e Parcerias Estratégicas',
-      excerpt: 'Veja como nossas parcerias estratégicas fortalecem a comunidade e criam oportunidades.',
-      content: 'Conteúdo completo sobre comunidade e parcerias.',
-      author: 'Admin',
-      date: new Date(2024, 10, 1).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Comunidade',
-      tags: ['comunidade', 'parcerias', 'cooperação'],
-      category: 'Comunidade',
-    },
-    {
-      id: '6',
-      slug: 'excelencia-educacional',
-      title: 'Excelência Educacional em Ação',
-      excerpt: 'Saiba mais sobre nossos programas educacionais de qualidade e excelência acadêmica.',
-      content: 'Conteúdo completo sobre excelência educacional.',
-      author: 'Admin',
-      date: new Date(2024, 9, 28).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Educação',
-      tags: ['educação', 'excelência', 'acadêmico'],
-      category: 'Educação',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       <Hero />
-      
-      <main className="container-custom py-16">
-        {/* Seção de Destaques */}
-        <section className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Últimas Notícias</h2>
-            <p className="text-gray-600">Fique atualizado com os últimos artigos e notícias da nossa instituição</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {postagens.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
 
-        {/* Seção de Categorias */}
-        <section className="bg-white rounded-lg p-8 border border-gray-200">
-          <h2 className="text-2xl font-bold mb-6">Categorias</h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {['Destaques', 'Tecnologia', 'Sustentabilidade', 'Pesquisa', 'Comunidade', 'Educação'].map((cat) => (
-              <button
-                key={cat}
-                className="px-4 py-3 border border-gray-300 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors text-left font-medium"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </section>
+      {/* Mapa de Presença */}
+      <MapaPresenca />
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-4 py-20">
+        <div className="max-w-4xl mx-auto">
+          {/* Sobre a UPE */}
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-8" style={{ color: '#1A4081' }}>Sobre a UPE</h2>
+            
+            <div className="p-8 rounded-lg border mb-8" style={{ backgroundColor: '#E0F2F7', borderColor: 'rgba(26, 64, 129, 0.2)' }}>
+              <h3 className="text-2xl font-bold mb-4" style={{ color: '#0F2654' }}>União Paranaense dos Estudantes</h3>
+              <p className="mb-4 text-lg" style={{ color: '#333333' }}>
+                A UPE é a organização que representa e defende os direitos dos estudantes do Paraná.
+                Através de nossas ações, buscamos transformar a educação e a sociedade.
+              </p>
+              <p className="text-lg" style={{ color: '#333333' }}>
+                Somos uma entidade estudantil que atua em defesa de uma educação pública, gratuita, de qualidade e socialmente relevante.
+              </p>
+            </div>
+
+            <Link
+              href="/institucional/quem-somos"
+              className="font-semibold text-lg transition-opacity hover:opacity-70"
+              style={{ color: '#1A4081' }}
+            >
+              Saiba mais sobre nós →
+            </Link>
+          </section>
+
+          {/* Acesso Rápido */}
+          <section className="mb-20">
+            <h2 className="text-3xl font-bold mb-6" style={{ color: '#0F2654' }}>Acesso Rápido</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Link href="/noticias" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#1A4081' }}>
+                <div className="text-lg font-semibold">Notícias</div>
+                <div className="text-sm mt-2 opacity-90">Acesse publicações e artigos</div>
+              </Link>
+
+              <Link href="/servicos" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#14B8A6' }}>
+                <div className="text-lg font-semibold">Serviços</div>
+                <div className="text-sm mt-2 opacity-90">Convênios, informações e organização</div>
+              </Link>
+
+              <Link href="/institucional/ex-presidentes" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#4CAF50' }}>
+                <div className="text-lg font-semibold">Ex-Presidentes</div>
+                <div className="text-sm mt-2 opacity-90">Lista de mandatos</div>
+              </Link>
+
+              <Link href="/institucional/mocoes-resolucoes" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#0F2654' }}>
+                <div className="text-lg font-semibold">Moções e Resoluções</div>
+                <div className="text-sm mt-2 opacity-90">Deliberações e documentos</div>
+              </Link>
+
+              <Link href="/blog" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#1A4081' }}>
+                <div className="text-lg font-semibold">Blog</div>
+                <div className="text-sm mt-2 opacity-90">Artigos e análises</div>
+              </Link>
+
+              <Link href="/contato" className="p-6 rounded-lg shadow text-white flex flex-col" style={{ backgroundColor: '#14B8A6' }}>
+                <div className="text-lg font-semibold">Contato</div>
+                <div className="text-sm mt-2 opacity-90">Fale conosco</div>
+              </Link>
+            </div>
+          </section>
+
+          {/* Áreas de Atuação */}
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-12" style={{ color: '#1A4081' }}>Nossas Áreas de Atuação</h2>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white p-8 rounded-lg border" style={{ borderColor: '#EEEEEE' }}>
+                <div className="text-4xl mb-4">🎓</div>
+                <h3 className="text-lg font-bold mb-3" style={{ color: '#1A4081' }}>Educação</h3>
+                <p style={{ color: '#666666' }}>
+                  Lutamos por uma educação pública, gratuita e de qualidade para todos os estudantes.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg border" style={{ borderColor: '#EEEEEE' }}>
+                <div className="text-4xl mb-4">⚖️</div>
+                <h3 className="text-lg font-bold mb-3" style={{ color: '#1A4081' }}>Direitos Estudantis</h3>
+                <p style={{ color: '#666666' }}>
+                  Defendemos os direitos e garantias dos estudantes perante as instituições.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg border" style={{ borderColor: '#EEEEEE' }}>
+                <div className="text-4xl mb-4">🌱</div>
+                <h3 className="text-lg font-bold mb-3" style={{ color: '#1A4081' }}>Sustentabilidade</h3>
+                <p style={{ color: '#666666' }}>
+                  Promovemos ações e debates sobre desenvolvimento sustentável e responsabilidade social.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg border" style={{ borderColor: '#EEEEEE' }}>
+                <div className="text-4xl mb-4">🤝</div>
+                <h3 className="text-lg font-bold mb-3" style={{ color: '#1A4081' }}>Mobilização Social</h3>
+                <p style={{ color: '#666666' }}>
+                  Organizamos eventos, manifestações e campanhas para transformação social.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="p-12 rounded-lg text-center border" style={{ backgroundColor: '#E0F2F7', borderColor: 'rgba(26, 64, 129, 0.2)' }}>
+            <h3 className="text-3xl font-bold mb-4" style={{ color: '#1A4081' }}>Faça Parte do Movimento</h3>
+            <p className="mb-8 text-lg max-w-2xl mx-auto" style={{ color: '#333333' }}>
+              Junte-se a nós na luta pelos direitos dos estudantes e transformação social.
+            </p>
+            <Link
+              href="/participe"
+              className="inline-block text-white px-8 py-3 rounded-lg font-bold transition-opacity hover:opacity-90 shadow-lg"
+              style={{ backgroundColor: '#4CAF50' }}
+            >
+              Participe Agora
+            </Link>
+          </section>
+        </div>
       </main>
     </div>
   );
