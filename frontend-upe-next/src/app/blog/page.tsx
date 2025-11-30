@@ -1,81 +1,44 @@
+"use client"
+
 import BlogCard from "@/components/blog/BlogCard";
 import { BlogPost } from "@/types";
+import { useEffect, useState } from "react";
 
 export default function BlogPage() {
-  const postagens: BlogPost[] = [
-    {
-      id: '1',
-      slug: 'boas-praticas-institucionais',
-      title: 'Boas Práticas Institucionais',
-      excerpt: 'Conheça as boas práticas que norteiam nossa instituição e como elas impactam nossas operações diárias.',
-      content: 'Conteúdo completo da postagem sobre boas práticas.',
-      author: 'Admin',
-      date: new Date(2024, 10, 10).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Boas+Práticas',
-      tags: ['práticas', 'instituição', 'operações'],
-      category: 'Destaques',
-    },
-    {
-      id: '2',
-      slug: 'transformacao-digital',
-      title: 'Transformação Digital em Foco',
-      excerpt: 'Exploraremos como a transformação digital está revolucionando nossa instituição e melhorando serviços.',
-      content: 'Conteúdo completo sobre transformação digital.',
-      author: 'Admin',
-      date: new Date(2024, 10, 8).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Digital',
-      tags: ['tecnologia', 'digital', 'transformação'],
-      category: 'Tecnologia',
-    },
-    {
-      id: '3',
-      slug: 'sustentabilidade-compromisso',
-      title: 'Sustentabilidade: Nosso Compromisso',
-      excerpt: 'Descubra como estamos comprometidos com práticas sustentáveis e responsabilidade social.',
-      content: 'Conteúdo completo sobre sustentabilidade.',
-      author: 'Admin',
-      date: new Date(2024, 10, 5).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Sustentabilidade',
-      tags: ['sustentabilidade', 'responsabilidade', 'ambiental'],
-      category: 'Sustentabilidade',
-    },
-    {
-      id: '4',
-      slug: 'inovacao-pesquisa',
-      title: 'Inovação e Pesquisa: O Futuro',
-      excerpt: 'Conheça nossos projetos de inovação e pesquisa que estão moldando o futuro da instituição.',
-      content: 'Conteúdo completo sobre inovação e pesquisa.',
-      author: 'Admin',
-      date: new Date(2024, 10, 3).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Inovação',
-      tags: ['inovação', 'pesquisa', 'futuro'],
-      category: 'Pesquisa',
-    },
-    {
-      id: '5',
-      slug: 'comunidade-parcerias',
-      title: 'Comunidade e Parcerias Estratégicas',
-      excerpt: 'Veja como nossas parcerias estratégicas fortalecem a comunidade e criam oportunidades.',
-      content: 'Conteúdo completo sobre comunidade e parcerias.',
-      author: 'Admin',
-      date: new Date(2024, 10, 1).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Comunidade',
-      tags: ['comunidade', 'parcerias', 'cooperação'],
-      category: 'Comunidade',
-    },
-    {
-      id: '6',
-      slug: 'excelencia-educacional',
-      title: 'Excelência Educacional em Ação',
-      excerpt: 'Saiba mais sobre nossos programas educacionais de qualidade e excelência acadêmica.',
-      content: 'Conteúdo completo sobre excelência educacional.',
-      author: 'Admin',
-      date: new Date(2024, 9, 28).toISOString(),
-      image: 'https://via.placeholder.com/600x400?text=Educação',
-      tags: ['educação', 'excelência', 'acadêmico'],
-      category: 'Educação',
-    },
-  ];
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch("http://localhost:4000/api/posts");
+      if (response.ok) {
+        const data = await response.json();
+        setPosts(data);
+      } else {
+        console.error("Falha ao buscar posts");
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/api/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
+
+    if (response.ok) {
+      alert("Post criado com sucesso!");
+      setTitle("");
+      setContent("");
+    } else {
+      alert("Erro ao criar o post.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -83,14 +46,57 @@ export default function BlogPage() {
       <section className="bg-blue-600 text-white py-12">
         <div className="container-custom">
           <h1 className="text-4xl font-bold mb-4">Blog Institucional</h1>
-          <p className="text-blue-100 text-lg">Todos os artigos, notícias e atualizações</p>
+          <p className="text-blue-100 text-lg">
+            Todos os artigos, notícias e atualizações
+          </p>
         </div>
       </section>
 
       {/* Main Content */}
       <main className="container-custom py-16">
+        {/* Formulário para criação de novos posts */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-4">Criar Novo Post</h2>
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white p-6 rounded-lg shadow-md"
+          >
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Título
+              </label>
+              <input
+                type="text"
+                placeholder="Título"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+                className="w-full p-3 border border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Conteúdo
+              </label>
+              <textarea
+                placeholder="Conteúdo"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+                className="w-full p-3 border border-gray-300 rounded-md"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition-all"
+            >
+              Criar Post
+            </button>
+          </form>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-6">
-          {postagens.map((post) => (
+          {posts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>
