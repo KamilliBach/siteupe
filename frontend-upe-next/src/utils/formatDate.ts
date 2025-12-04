@@ -19,3 +19,4 @@ export const formatDateShort = (date: string | Date): string => {
     day: '2-digit',
   });
 };
+

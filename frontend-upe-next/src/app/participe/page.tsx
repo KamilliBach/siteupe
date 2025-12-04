@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function ParticipePage() {
+export default function Conhe�aPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,7 +34,7 @@ export default function ParticipePage() {
     <div className="min-h-screen bg-gray-50">
       <section className="bg-purple-600 text-white py-12">
         <div className="container-custom">
-          <h1 className="text-4xl font-bold mb-4">Participe</h1>
+          <h1 className="text-4xl font-bold mb-4">Conhe�a</h1>
           <p className="text-purple-100 text-lg">Faça parte de nossa comunidade</p>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function ParticipePage() {
                 <div className="text-3xl mb-3">📚</div>
                 <h3 className="font-bold text-lg mb-2">Aprendizado</h3>
                 <p className="text-gray-600">
-                  Participe de workshops, seminários e eventos educativos
+                  Conhe�a de workshops, seminários e eventos educativos
                 </p>
               </div>
 
@@ -157,3 +157,4 @@ export default function ParticipePage() {
     </div>
   );
 }
+

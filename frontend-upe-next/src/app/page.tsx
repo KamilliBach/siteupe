@@ -120,11 +120,11 @@ export default function Home() {
               Junte-se a nós na luta pelos direitos dos estudantes e transformação social.
             </p>
             <Link
-              href="/participe"
+              href="/Conhe�a"
               className="inline-block text-white px-8 py-3 rounded-lg font-bold transition-opacity hover:opacity-90 shadow-lg"
               style={{ backgroundColor: '#4CAF50' }}
             >
-              Participe Agora
+              Conhe�a Agora
             </Link>
           </section>
         </div>
@@ -132,3 +132,4 @@ export default function Home() {
     </div>
   );
 }
+

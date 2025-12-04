@@ -47,3 +47,4 @@ export default function HistoriaPage() {
     </div>
   );
 }
+

@@ -30,8 +30,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/participe" className="hover:opacity-70 transition-opacity">
-                  Participe
+                <a href="/Conhe�a" className="hover:opacity-70 transition-opacity">
+                  Conhe�a
                 </a>
               </li>
             </ul>
@@ -70,3 +70,4 @@ export default function Footer() {
     </footer>
   );
 }
+

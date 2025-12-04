@@ -62,3 +62,4 @@ export default function UPELogo({ width = 120, height = 120 }: { width?: number;
     </svg>
   );
 }
+
